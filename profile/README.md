@@ -1,9 +1,18 @@
-We present a complete video surveillance kit for end-users and small retailers. You can buy the suggested hardware and install and run our software solutions (you can find compiled binary and sources in this organization) on your devices. No remote controls, no cloud, no costly subscriptions, and no third person can access your data. 
+# Omara
 
-We believe in our on-prem solutions! More often than not, non-on-prem solutions behind the promise of better coverage or greater security lie only in a violation of end-user privacy.
+**Own your core!**
 
-Omadica responds to the growing need for freedom and transparency in surveillance services. Our GitHub organization offers suggestions for open-source software that anyone can install on a Raspberry Pi (or similar hardware) and quickly create video surveillance customized to your needs.
+Omara provides open-source SDKs for building mobile core network-funtions, and the high-performance substrate for 5G UPFs. We start where the packets do: in the Linux kernel, with eBPF/XDP data paths, and in a lock-free, zero-allocation C++23 runtime engineered for the latency budgets of a real telecom network.
 
-If you are not a hacking guy and prefer a just-installed and working platform, you can contact us at integration@omadica.com to express your needs. We will process your request and send you a quotation soon. The quotation will cover just hardware + shipment cost. If you are satisfied with our products, please leave a small economic contribution or better, become our sponsor [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/Omadica) it's very important for us because all of our work relys on free offerings.
+Our goal is simple to state and hard to do: **make the mobile core network functions something an operator can build, not just buy.** The 5G core, the user-plane data path and the GTP tunneling engine underneath it, are re-implemented inside every vendor appliance and shared by no one. We are building those layers as open, embeddable libraries so that a network operator with strong engineers and commodity hardware can actually own its networs.
 
-Once the package is sent, we cannot access it anymore. The system's control will be only up to you. 
+## Projects
+
+- **[HCS](https://github.com/omara/HCS) — omadica-core, the reusable NF runtime.** A dependency-free C++23 library for building network functions: a zero-allocation work-stealing executor, lock-free memory pools and queues, NUMA-aware CPU placement and epoll event plumbing. The AF_XDP/eBPF ingress that classifies GTP-U tunnels and meters usage *inside the NIC driver*, so an unknown tunnel is dropped before it costs a single frame of userspace memory.
+- **[gtp-lib](https://github.com/omadica/gtp-lib) — a high-performance GTP tunnel library, in the making.** The embeddable user-plane datapath for anyone building a UPF, a gateway, a traffic generator or a GTP security probe. A library, and not yet another monolithic UPF.
+
+## How we build
+
+Everything is grounded in the 3GPP specifications (TS 29.281, TS 29.244, TS 23.501, …) and in measurement: every queue and pool has an explicit bound, overload is a counted, returned signal instead of unbounded memory growth, and performance is demonstrated on calibrated harnesses, not asserted. The engine ships the *plumbing, not a framework*. The reactor, the wiring and the network functions stay yours to write.
+
+The vision is a layered, fully open stack that turns the most expensive black box in a mobile network into software you can read, measure and own.
