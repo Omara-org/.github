@@ -9,7 +9,7 @@ Our goal is simple to state and hard to do: **make the mobile core network funct
 ## Projects
 
 - **[HCS](https://github.com/omara/HCS) — omadica-core, the reusable NF runtime.** A dependency-free C++23 library for building network functions: a zero-allocation work-stealing executor, lock-free memory pools and queues, NUMA-aware CPU placement and epoll event plumbing. The AF_XDP/eBPF ingress that classifies GTP-U tunnels and meters usage *inside the NIC driver*, so an unknown tunnel is dropped before it costs a single frame of userspace memory.
-- **[gtp-lib](https://github.com/omadica/gtp-lib) — a high-performance GTP tunnel library, in the making.** The embeddable user-plane datapath for anyone building a UPF, a gateway, a traffic generator or a GTP security probe. A library, and not yet another monolithic UPF.
+- **[gtp-lib](https://github.com/omara/gtp-lib) — a high-performance GTP tunnel library, in the making.** The embeddable user-plane datapath for anyone building a UPF, a gateway, a traffic generator or a GTP security probe. A library, and not yet another monolithic UPF.
 
 ## How we build
 
